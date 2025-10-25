@@ -1,3 +1,5 @@
+import { Console } from "@woowacourse/mission-utils";
+
 const Winner = {
   getWinners(cars) {
     if (!Array.isArray(cars) || cars.length === 0) {
@@ -17,7 +19,7 @@ const Winner = {
     }
 
     const message = winners.join(", ");
-    console.print(`최종 우승자 : ${message}`);
+    Console.print(`최종 우승자 : ${message}`);
   },
 };
 
