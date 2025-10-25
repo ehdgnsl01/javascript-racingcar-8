@@ -1,7 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
+const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,7 +10,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
+const mockRandoms = numbers => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
 
   numbers.reduce((acc, number) => {
@@ -41,14 +41,46 @@ describe("자동차 경주", () => {
     await app.run();
 
     // then
-    logs.forEach((log) => {
+    logs.forEach(log => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
     });
   });
 
-  test("예외 테스트", async () => {
+  test("공동 우승자 테스트", async () => {
     // given
-    const inputs = ["pobi,javaji"];
+    const MOVING_FORWARD = 4;
+    const inputs = ["pobi,woni,jun", "1"];
+    const logs = ["pobi : -", "woni : -", "jun : -", "최종 우승자 : pobi, woni, jun"];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD]);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
+    logs.forEach(log => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
+    });
+  });
+
+  test("예외 테스트 - 자동차 이름 5자 초과", async () => {
+    // given
+    const inputs = ["pobi,supercar"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
+
+  test("예외 테스트 - 시도 횟수 음수 입력", async () => {
+    // given
+    const inputs = ["pobi,woni", "-1"];
     mockQuestions(inputs);
 
     // when
