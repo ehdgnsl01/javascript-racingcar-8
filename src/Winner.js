@@ -17,7 +17,7 @@ const Winner = {
     }
 
     const message = winners.join(", ");
-    console.log(`최종 우승자 : ${message}`);
+    console.print(`최종 우승자 : ${message}`);
   },
 };
 
