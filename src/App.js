@@ -2,10 +2,10 @@ import InputOutput from "./InputOutput.js";
 
 class App {
   async run() {
-    const carNames = await InputOutput.readCarNames();
-    const roundCount = await InputOutput.readRoundCount();
+    const carNamesInput = await InputOutput.readCarNames();
+    const roundCountInput = await InputOutput.readRoundCount();
 
-    InputOutput.printInputResult(carNames, roundCount);
+    InputOutput.printInputResult(carNamesInput, roundCountInput);
   }
 }
 
