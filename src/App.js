@@ -1,4 +1,4 @@
-import InputOutput from "./InputOutput.js";
+import Input from "./Input.js";
 import Validator from "./Validator.js";
 import RaceInitializer from "./RaceInitializer.js";
 import RandomMove from "./RandomMove.js";
@@ -6,8 +6,8 @@ import Winner from "./Winner.js";
 
 class App {
   async run() {
-    const carNamesInput = await InputOutput.readCarNames();
-    const roundCountInput = await InputOutput.readRoundCount();
+    const carNamesInput = await Input.readCarNames();
+    const roundCountInput = await Input.readRoundCount();
 
     const carNames = Validator.validateCarNames(carNamesInput);
     const roundCount = Validator.validateRoundCount(roundCountInput);

@@ -12,11 +12,6 @@ const InputOutput = {
     const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     return input;
   },
-
-  printInputResult(carNames, roundCount) {
-    Console.print(`자동차 이름 입력값: ${carNames}`);
-    Console.print(`시도 횟수 입력값: ${roundCount}`);
-  },
 };
 
 export default InputOutput;
