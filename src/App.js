@@ -1,5 +1,6 @@
 import InputOutput from "./InputOutput.js";
 import Validator from "./Validator.js";
+import RaceInitializer from "./RaceInitializer.js";
 
 class App {
   async run() {
@@ -9,7 +10,9 @@ class App {
     const carNames = Validator.validateCarNames(carNamesInput);
     const roundCount = Validator.validateRoundCount(roundCountInput);
 
-    InputOutput.printInputResult(carNames.join(","), roundCount);
+    const cars = RaceInitializer.initializeCars(carNames);
+
+    InputOutput.printInputResult(cars.map(car => car.name).join(", "), roundCount);
   }
 }
 
