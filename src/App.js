@@ -1,6 +1,7 @@
 import InputOutput from "./InputOutput.js";
 import Validator from "./Validator.js";
 import RaceInitializer from "./RaceInitializer.js";
+import RandomMove from "./RandomMove.js";
 
 class App {
   async run() {
@@ -12,7 +13,9 @@ class App {
 
     const cars = RaceInitializer.initializeCars(carNames);
 
-    InputOutput.printInputResult(cars.map(car => car.name).join(", "), roundCount);
+    RandomMove.moveAllCars(cars);
+
+    InputOutput.printInputResult(cars, roundCount);
   }
 }
 
