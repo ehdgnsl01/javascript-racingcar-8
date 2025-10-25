@@ -27,7 +27,28 @@ const Validator = {
   },
 
   validateRoundCount(input) {
-    // 시도 횟수 검증
+    if (!input || typeof input !== "string" || input.trim().length === 0) {
+      throw new Error("[ERROR] 시도 횟수를 입력해야 합니다.");
+    }
+
+    const num = Number(input);
+
+    // 숫자형식 확인
+    if (Number.isNaN(num)) {
+      throw new Error("[ERROR] 시도 횟수는 숫자여야 합니다.");
+    }
+
+    // 정수 아님
+    if (!Number.isInteger(num)) {
+      throw new Error("[ERROR] 시도 횟수는 정수여야 합니다.");
+    }
+
+    // 1 미만
+    if (num <= 0) {
+      throw new Error("[ERROR] 시도 횟수는 1 이상의 값이어야 합니다.");
+    }
+
+    return num;
   },
 };
 

@@ -7,8 +7,9 @@ class App {
     const roundCountInput = await InputOutput.readRoundCount();
 
     const carNames = Validator.validateCarNames(carNamesInput);
+    const roundCount = Validator.validateRoundCount(roundCountInput);
 
-    InputOutput.printInputResult(carNames.join(","), roundCountInput);
+    InputOutput.printInputResult(carNames.join(","), roundCount);
   }
 }
 
