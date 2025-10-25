@@ -13,9 +13,7 @@ class App {
 
     const cars = RaceInitializer.initializeCars(carNames);
 
-    RandomMove.moveAllCars(cars);
-
-    InputOutput.printInputResult(cars, roundCount);
+    RandomMove.runRace(cars, roundCount);
   }
 }
 
